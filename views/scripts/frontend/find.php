@@ -20,22 +20,21 @@
         <select id="searchCat" name="cat">
             <option value=""><?php echo  $this->translate('search_all_categories')?></option>
             <?php foreach($this->availableCategories as $category){?>
-            <option <? if($this->category==$category){ ?>selected="selected"<?php } ?> value="<?php echo  $category ?>""><?php echo  $this->translate('search_category_'.$category)?></option>
+            <option <?php if($this->category==$category){ ?>selected="selected"<?php } ?> value="<?php echo  $category ?>""><?php echo  $this->translate('search_category_'.$category)?></option>
             <?php } ?>
         </select>
     <?php } ?>
     <span class="submit_wrapper"><input class="submit" type="submit" value="<?php echo  $this->translate('search_submit')?>"/></span>
 
-         <script type="text/javascript">
-
-            $("#query").autocomplete('/plugin/SearchPhp/frontend/autocomplete/',{
-               minChars:3,
-               cacheLength: 0,
-               extraParams: {
-                   cat: function() { return $("#searchCat").val(); }
-               }
-            });
-
+    <script type="text/javascript">
+      if (jQuery().autocomplete) { // Only use autocompletion if the plugin is loaded
+        $("#query").autocomplete('/plugin/SearchPhp/frontend/autocomplete/',{
+          minChars:3,
+          cacheLength: 0,
+          extraParams: {
+            cat: function() { return $("#searchCat").val(); }
+          }
+        });
         </script>
 
 
