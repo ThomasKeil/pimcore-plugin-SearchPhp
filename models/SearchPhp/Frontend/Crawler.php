@@ -88,9 +88,9 @@ class SearchPhp_Frontend_Crawler {
         $db = Pimcore_Resource_Mysql::get();
 
         $this->db = $db;
-        $db->exec("DROP TABLE IF EXISTS `plugin_searchphp_contents_temp`;");
+        $db->query("DROP TABLE IF EXISTS `plugin_searchphp_contents_temp`;");
 
-        $db->exec("CREATE TABLE `plugin_searchphp_contents_temp` (
+        $db->query("CREATE TABLE `plugin_searchphp_contents_temp` (
                 `id` VARCHAR(255) NOT NULL,
                 `uri` TEXT NOT NULL,
                 `host` VARCHAR(255) NOT NULL,
@@ -99,9 +99,9 @@ class SearchPhp_Frontend_Crawler {
                       PRIMARY KEY  (`id`)
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
-        $db->exec("DROP TABLE IF EXISTS `plugin_searchphp_frontend_crawler_todo`;");
+        $db->query("DROP TABLE IF EXISTS `plugin_searchphp_frontend_crawler_todo`;");
 
-        $db->exec("CREATE TABLE `plugin_searchphp_frontend_crawler_todo` (
+        $db->query("CREATE TABLE `plugin_searchphp_frontend_crawler_todo` (
                         `id` VARCHAR(255) NOT NULL,
                         `uri` TEXT NOT NULL,
                         `depth` int(11) unsigned,
@@ -109,9 +109,9 @@ class SearchPhp_Frontend_Crawler {
                               PRIMARY KEY  (`id`)
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
-        $db->exec("DROP TABLE IF EXISTS `plugin_searchphp_indexer_todo`;");
+        $db->query("DROP TABLE IF EXISTS `plugin_searchphp_indexer_todo`;");
 
-        $db->exec("CREATE TABLE `plugin_searchphp_indexer_todo` (
+        $db->query("CREATE TABLE `plugin_searchphp_indexer_todo` (
                         `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                         `content` LONGTEXT NOT NULL,
                               PRIMARY KEY  (`id`)
